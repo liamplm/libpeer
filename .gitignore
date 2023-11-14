@@ -1,2 +1,5 @@
 cmake
 dist
+sdkconfig.old
+build
+

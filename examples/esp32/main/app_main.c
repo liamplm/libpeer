@@ -15,6 +15,8 @@
 #include "esp_tls.h"
 #include "esp_ota_ops.h"
 #include "freertos/FreeRTOS.h"
+#include "soc/soc.h"
+#include "soc/rtc_cntl_reg.h"
 
 #include "peer.h"
 
@@ -100,6 +102,8 @@ void app_main(void) {
    },
    .datachannel = DATA_CHANNEL_BINARY,
   };
+
+  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable   detector
 
   ESP_LOGI(TAG, "[APP] Startup..");
   ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
